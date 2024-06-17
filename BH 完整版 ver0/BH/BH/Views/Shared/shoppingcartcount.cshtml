@@ -1,0 +1,84 @@
+﻿<ul class="nav navbar-nav nav navbar-right">
+    <li id="cartItem">
+        @switch (Session["CartCounter"])
+        {
+            case null:
+                <div id="cartItem"></div>
+                break;
+            case 0:
+                <div id="cartItem"></div>
+                break;
+            case 1:
+                {
+                    string imghead = "/iconimages/number";
+                    string imgtail = ".png";
+                    <img src="@imghead@Session["CartCounter"]@imgtail" />
+                }
+                break;
+            case 2:
+                {
+                    string imghead = "/iconimages/number";
+                    string imgtail = ".png";
+                    <img src="@imghead@Session["CartCounter"]@imgtail" />
+                }
+                break;
+            case 3:
+                {
+                    string imghead = "/iconimages/number";
+                    string imgtail = ".png";
+                    <img src="@imghead@Session["CartCounter"]@imgtail" />
+                }
+                break;
+            case 4:
+                {
+                    string imghead = "/iconimages/number";
+                    string imgtail = ".png";
+                    <img src="@imghead@Session["CartCounter"]@imgtail" />
+                }
+                break;
+            case 5:
+                {
+                    string imghead = "/iconimages/number";
+                    string imgtail = ".png";
+                    <img src="@imghead@Session["CartCounter"]@imgtail" />
+                }
+                break;
+            case 6:
+                {
+                    string imghead = "/iconimages/number";
+                    string imgtail = ".png";
+                    <img src="@imghead@Session["CartCounter"]@imgtail" />
+                }
+                break;
+            case 7:
+                {
+                    string imghead = "/iconimages/number";
+                    string imgtail = ".png";
+                    <img src="@imghead@Session["CartCounter"]@imgtail" />
+                }
+                break;
+            case 8:
+                {
+                    string imghead = "/iconimages/number";
+                    string imgtail = ".png";
+                    <img src="@imghead@Session["CartCounter"]@imgtail" />
+                }
+                break;
+            case 9:
+                {
+                    string imghead = "/iconimages/number";
+                    string imgtail = ".png";
+                    <img src="@imghead@Session["CartCounter"]@imgtail" />
+                }
+                break;
+            default:
+                {
+                    string imghead = "/iconimages/plus";
+                    string imgtail = ".png";
+                    <img src="@imghead@imgtail" />
+                }
+                break;
+        }
+    </li>
+</ul>
+

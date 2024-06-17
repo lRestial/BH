@@ -1,0 +1,63 @@
+﻿@model BH.viewmodel.loginviewmodel
+
+@{
+
+    ViewBag.Title = "Loginfirst";
+}
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<div class="banner">
+    <div class="w3l_banner_nav">
+        <!-- login -->
+        <div class="w3_login">
+            <h3>登入</h3>
+            <div class="w3_login_module">
+                <div class="module form-module">
+                    <div class="toggle">
+                        <a href="@Url.Action("Loginmanage","Login")">m</a>
+                    </div>
+                    <div class="form">
+                        <h2>登入帳號</h2>
+                        @using (Html.BeginForm("Loginfirst", "Login", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div>
+                                <lable class="text-danger">
+                                    @Html.DisplayFor(m => m.loginerrormessage)
+                                </lable>
+                            </div>
+                            <div>
+                                <p>帳號</p>
+                                @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                            </div>
+                            <div>
+                                <p>密碼</p>
+                                @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div>
+                                <input type="submit" value="登入" id="logoinOrder" />
+                            </div>
+                        }
+                        <hr />
+                        <a href="@Url.Action("Logincreate", "Login")">
+                            <input type="submit" value=" 註冊" style="background-color:#ff0000" />
+                        </a>
+                    </div>
+
+                    <div class="cta"><a href="#">Forgot your password?</a></div>
+                </div>
+            </div>
+
+        </div>
+        <!-- //login -->
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

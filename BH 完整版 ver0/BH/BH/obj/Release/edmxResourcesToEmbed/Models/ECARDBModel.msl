@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ECARDBModelStoreContainer" CdmEntityContainer="ECARDBEntities">
+    <EntitySetMapping Name="cartpaypal">
+      <EntityTypeMapping TypeName="ECARDBModel.cartpaypal">
+        <MappingFragment StoreEntitySet="cartpaypal">
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="itemID" ColumnName="itemID" />
+          <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+          <ScalarProperty Name="itemName" ColumnName="itemName" />
+          <ScalarProperty Name="imagePath" ColumnName="imagePath" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="paypaldate" ColumnName="paypaldate" />
+          <ScalarProperty Name="paypaltruefalse" ColumnName="paypaltruefalse" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="categories">
+      <EntityTypeMapping TypeName="ECARDBModel.categories">
+        <MappingFragment StoreEntitySet="categories">
+          <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+          <ScalarProperty Name="categoryCode" ColumnName="categoryCode" />
+          <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cuisine">
+      <EntityTypeMapping TypeName="ECARDBModel.cuisine">
+        <MappingFragment StoreEntitySet="cuisine">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="EV" ColumnName="EV" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Introduce" ColumnName="Introduce" />
+          <ScalarProperty Name="Ingredients" ColumnName="Ingredients" />
+          <ScalarProperty Name="Step" ColumnName="Step" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="YTLink" ColumnName="YTLink" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="items">
+      <EntityTypeMapping TypeName="ECARDBModel.items">
+        <MappingFragment StoreEntitySet="items">
+          <ScalarProperty Name="itemID" ColumnName="itemID" />
+          <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+          <ScalarProperty Name="itemName" ColumnName="itemName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="imagePath" ColumnName="imagePath" />
+          <ScalarProperty Name="itemPrice" ColumnName="itemPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="login">
+      <EntityTypeMapping TypeName="ECARDBModel.login">
+        <MappingFragment StoreEntitySet="login">
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="address" ColumnName="address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="managelogin">
+      <EntityTypeMapping TypeName="ECARDBModel.managelogin">
+        <MappingFragment StoreEntitySet="managelogin">
+          <ScalarProperty Name="managename" ColumnName="managename" />
+          <ScalarProperty Name="managepassword" ColumnName="managepassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Order">
+      <EntityTypeMapping TypeName="ECARDBModel.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderDetails">
+      <EntityTypeMapping TypeName="ECARDBModel.OrderDetails">
+        <MappingFragment StoreEntitySet="OrderDetails">
+          <ScalarProperty Name="OrderDetailled" ColumnName="OrderDetailled" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="itemID" ColumnName="itemID" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="paypal">
+      <EntityTypeMapping TypeName="ECARDBModel.paypal">
+        <MappingFragment StoreEntitySet="paypal">
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="paypaldate" ColumnName="paypaldate" />
+          <ScalarProperty Name="paypaltruefalse" ColumnName="paypaltruefalse" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,191 @@
+﻿@model IEnumerable<BH.Models.cuisine>
+
+@{
+
+    ViewBag.Title = "USAfood";
+}
+
+
+
+<style>
+    input {
+        border: 0;
+        background-color: #2894FF;
+        color: #fff;
+        border-radius: 10px;
+        cursor: pointer;
+        width: 150px;
+        height: 50px;
+    }
+
+        input:hover {
+            color: #003C9D;
+            background-color: #fff;
+            border: 2px #003C9D solid;
+            width: 150px;
+            height: 50px;
+        }
+
+
+    body {
+        text-align: center;
+        width: 100%;
+        margin: 0 auto;
+        font-family: helvetica;
+    }
+
+    #curtain1 {
+        top: 0px;
+        position: absolute;
+        left: 0px;
+        height: 100%;
+        width: 50%
+    }
+
+    #curtain2 {
+        top: 0px;
+        position: absolute;
+        right: 0px;
+        height: 100%;
+        width: 50%
+    }
+
+    table {
+    }
+
+    h1 {
+        color: #4cff00
+    }
+
+    .fonttext {
+        font-size: 38px;
+        text-align: center;
+        color: #000000;
+    }
+</style>
+@if (Model.Count() == 0)
+{
+    <h3>抱歉目前沒有料理!!請稍後在試</h3>
+}
+else
+{
+    <form>
+        <div>
+            <img src="~/images/curtain1.jpg" id="curtain1" />
+            <img src="~/images/curtain2.jpg" id="curtain2" />
+        </div>
+        <div style="z-index: 999; position:relative;" class="container">
+            <h1 id="question1">心情如何?</h1>
+            <input id="button1" type="button" value="開心" onclick="show1()" />
+            <input id="button2" type="button" value="傷心" onclick="show1()" />
+            <input id="button3" type="button" value="普通" onclick="show1()" />
+        </div>
+        <div style="z-index: 999; position: relative; " class="container">
+            <h1 id="question2" style="display: none;">口味如何?</h1>
+            <input id="button4" type="button" value="甜的" onclick="show2()" style="display: none" />
+            <input id="button5" type="button" value="辣的" onclick="show2()" style="display: none" />
+            <input id="button6" type="button" value="酸的" onclick="show2()" style="display: none" />
+        </div>
+        <div style="z-index: 999; position: relative;" class="container">
+            <h1 id="question3" style="display: none;">份量要多少?</h1>
+            <input id="button7" type="button" value="大的" onclick="show3()" style="display: none" />
+            <input id="button8" type="button" value="中的" onclick="show3()" style="display: none" />
+            <input id="button9" type="button" value="小的" onclick="show3()" style="display: none" />
+        </div>
+
+    </form>
+    <h2 style="color:#ff0000">抽卡結果</h2>
+    <table id="table" style="display:none;">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td align="left">
+                    <form action="/shopping/Index" method="get">
+                        <button name="searching" type="submit" value="French" style="border:hidden ">
+                            <img src="~/cuisineimages/@item.Image" height="400" width="400" />
+                        </button>
+                    </form>
+                    <hr />
+                </td>
+                <td class="fonttext">
+                    @Html.DisplayFor(modelItem => item.EV)
+                    @Html.DisplayFor(modelItem => item.Name)
+                    <hr />
+
+                    【介紹】:
+                    <br />
+                    @Html.DisplayFor(modelItem => item.Introduce)
+                    <br />
+
+                    【食材】:
+                    <br />
+                    @Html.DisplayFor(modelItem => item.Ingredients)
+                    <br />
+
+                    【步驟】:
+                    <br />
+                    @Html.DisplayFor(modelItem => item.Step)
+                    <hr />
+                    <a href="@item.YTLink">參考Youtube食譜做法</a>
+                </td>
+            </tr>
+        }
+    </table>
+
+}
+
+<script type="text/javascript">
+    var q1 = document.getElementById("question1");
+    var bt1 = document.getElementById("button1");
+    var bt2 = document.getElementById("button2");
+    var bt3 = document.getElementById("button3");
+
+    var q2 = document.getElementById("question2");
+    var bt4 = document.getElementById("button4");
+    var bt5 = document.getElementById("button5");
+    var bt6 = document.getElementById("button6");
+
+    var q3 = document.getElementById("question3");
+    var bt7 = document.getElementById("button7");
+    var bt8 = document.getElementById("button8");
+    var bt9 = document.getElementById("button9");
+    var data = document.getElementById("table");
+
+    function show1() {
+        q1.style.display = "none";
+        bt1.style.display = "none";
+        bt2.style.display = "none";
+        bt3.style.display = "none";
+
+        q2.style.display = "block";
+        bt4.style.display = "inline-block";
+        bt5.style.display = "inline-block";
+        bt6.style.display = "inline-block";
+    }
+    function show2() {
+        q2.style.display = "none";
+        bt4.style.display = "none";
+        bt5.style.display = "none";
+        bt6.style.display = "none";
+
+        q3.style.display = "block";
+        bt7.style.display = "inline-block";
+        bt8.style.display = "inline-block";
+        bt9.style.display = "inline-block";
+    }
+    function show3() {
+        q3.style.display = "none";
+        bt7.style.display = "none";
+        bt8.style.display = "none";
+        bt9.style.display = "none";
+
+        $("#curtain1").animate({ width: 20 }, 1000);
+        $("#curtain2").animate({ width: 20 }, 1000);
+        data.style.display = "block";
+
+    }
+</script>
+
+
+
+

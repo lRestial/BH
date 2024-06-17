@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <IisApp path="D:\新增資料夾(專題)\BH 完整版 ver0\BH\BH\obj\Release\Package\PackageTmp" />
+  <setAcl path="D:\新增資料夾(專題)\BH 完整版 ver0\BH\BH\obj\Release\Package\PackageTmp" setAclResourceType="Directory" />
+  <setAcl path="D:\新增資料夾(專題)\BH 完整版 ver0\BH\BH\obj\Release\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
+</sitemanifest>

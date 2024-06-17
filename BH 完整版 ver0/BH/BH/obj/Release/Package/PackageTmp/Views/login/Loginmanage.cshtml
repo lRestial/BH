@@ -1,0 +1,32 @@
+﻿@model BH.viewmodel.manageloginviewmodel
+@{
+    ViewBag.Title = "Loginmanage";
+}
+
+<h2>Loginmanage</h2>
+@using (Html.BeginForm("Loginmanage", "Login", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div>
+        <lable class="text-danger">
+            @Html.DisplayFor(m => m.loginerrormessage)
+        </lable>
+    </div>
+    <div>
+        <p>username</p>
+        @Html.EditorFor(model => model.managename, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.managename, "", new { @class = "text-danger" })
+    </div>
+    <div>
+        <p>password</p>
+        @Html.EditorFor(model => model.managepassword, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.managepassword, "", new { @class = "text-danger" })
+    </div>
+
+    <div>
+        <input type="submit" value="login" id="logoinOrder" />
+
+    </div>
+}
+<hr />
+

@@ -1,0 +1,109 @@
+﻿@model IEnumerable<BH.Models.cartpaypal>
+@switch (Session["CartCounter"])
+{
+    case null:
+        {
+            <script type="text/javascript">
+                alert("購物車沒有東西");
+                location.href = "/home/Index";
+            </script>
+
+        }
+        break;
+    case 0:
+        {
+            <script type="text/javascript">
+                alert("購物車沒有東西");
+                location.href = "/home/Index";
+            </script>
+
+        }
+        break;
+}
+@{
+    ViewBag.Title = "shoppingCartThing";
+    decimal TotalAmoumt = 0.00M;
+}
+<!-- now location-->
+<div class="products-breadcrumb">
+    <div class="container">
+        <ul>
+            <li><i class="fa fa-home" aria-hidden="true"></i><a href="@Url.Action("Index","home")">Home</a><span>|</span></li>
+            <li>購物車</li>
+        </ul>
+    </div>
+</div>
+<!--now location-->
+<div class="privacy about">
+    <h3>購物車</h3>
+    <div>
+        <h2>購物車內容:</h2>
+        @using (Html.BeginForm("checkout", "CART", FormMethod.Post))
+        {
+            if (Model == null)
+            {
+                <table class="timetable_sub">
+                    <thead>
+                        <tr>
+                            <th>圖片</th>
+                            <th>名稱</th>
+                            <th>數量</th>
+                            <th>價格</th>
+                            <th>小計</th>
+                        </tr>
+                    </thead>
+                </table>
+            }
+            else
+            {
+                <table class="timetable_sub">
+                    <thead>
+                        <tr>
+                            <th>圖片</th>
+                            <th>名稱</th>
+                            <th>數量</th>
+                            <th>價格</th>
+                            <th>小計</th>
+                        </tr>
+                    </thead>
+                    @foreach (var car in Model)
+                    {
+                        TotalAmoumt += car.Total;
+                        <tbody>
+                            <tr class="rem1">
+                                <td class="invert">
+                                    <img src="@Url.Content(car.imagePath)" height="50px" width="50px" class="img-rounded" />
+                                    <p hidden>@car.OrderNumber.ToString()</p>
+                                </td>
+                                <td class="invert">
+                                    @car.itemName
+                                </td>
+                                <td class="invert">
+                                    <p>x  @car.Quantity.ToString()</p>
+                                </td>
+                                <td class="invert">
+                                    @car.UnitPrice.ToString("#00 元(台幣)")
+                                </td>
+                                <td class="invert">
+                                    @car.Total.ToString("#00 元(台幣)")
+                                    <a href="@Url.Action("delete","CART",new { OrderNumber=car.OrderNumber })" onclick="return confirm('確定刪除?');">
+                                        <span class="glyphicon glyphicon-trash" aria-hidden="true">
+                                        </span>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    }
+                </table>
+                <br />
+                <div style="border-top:2px solid maroon">
+                    <h2 style="position:relative;left:80%">總和 @TotalAmoumt.ToString("#00 元(台幣)")</h2>
+                    <br />
+                    <input type="submit" style="position:relative;left:90%" value="確認訂單" name="Save" class=" btn btn-primary" id="SaveOrder" />
+                </div>
+            }
+        }
+    </div>
+</div>
+
+

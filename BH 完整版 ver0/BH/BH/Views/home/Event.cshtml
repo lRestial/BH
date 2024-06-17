@@ -1,0 +1,142 @@
+﻿
+@{
+    ViewBag.Title = "Event";
+}
+
+<h2>Event</h2>
+<!--top-banner-->
+<div class="top-brands">
+    <div class="container">
+        <h3>請選擇一種!!</h3>
+        <div class="agile_top_brands_grids">
+            <div class="col-md-3 top_brand_left">
+                <div class="hover14 column">
+                    <div class="agile_top_brand_left_grid">
+                        <a href="@Url.Action("USAfood","event")">
+                            <div class="agile_top_brand_left_grid1">
+                                <figure>
+                                    <div class="snipcart-item block">
+                                        <div class="snipcart-thumb">
+                                            <img src="~/iconimages/usa.jpg" id="usa" />
+                                            <h3>美式料理</h3>
+                                        </div>
+                                        <div class="snipcart-details top_brand_home_details">
+                                            <form action="checkout.html" method="post">
+                                                <fieldset>
+                                                    <input style="text-align:center" value="點我前往" class="button" />
+                                                </fieldset>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </figure>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 top_brand_left">
+                <div class="hover14 column">
+                    <div class="agile_top_brand_left_grid">
+                        <a href="@Url.Action("JPfood","event")">
+                            <div class="agile_top_brand_left_grid1">
+                                <figure>
+                                    <div class="snipcart-item block">
+                                        <div class="snipcart-thumb">
+                                            <img src="~/iconimages/jp.jpg" id="jp" />
+                                            <h3>日式料理</h3>
+                                        </div>
+                                        <div class="snipcart-details top_brand_home_details">
+                                            <form action="checkout.html" method="post">
+                                                <fieldset>
+                                                    <input style="text-align:center" value="點我前往" class="button" />
+                                                </fieldset>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </figure>
+                            </div>
+                        </a>                  
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 top_brand_left">
+                <div class="hover14 column">
+                    <div class="agile_top_brand_left_grid">
+                        <a href="@Url.Action("Frenchfood","event")">
+                            <div class="agile_top_brand_left_grid1">
+                                <figure>
+                                    <div class="snipcart-item block">
+                                        <div class="snipcart-thumb">
+                                            <img src="~/iconimages/fra.jpg" id="fra" />
+                                            <h3>法式料理</h3>
+                                        </div>
+                                        <div class="snipcart-details top_brand_home_details">
+                                            <form action="checkout.html" method="post">
+                                                <fieldset>
+                                                    <input style="text-align:center" value="點我前往" class="button" />
+                                                </fieldset>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </figure>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 top_brand_left">
+                <div class="hover14 column">
+                    <div class="agile_top_brand_left_grid">
+                        <a href="@Url.Action("SAfood","event")">
+                            <div class="agile_top_brand_left_grid1">
+                                <figure>
+                                    <div class="snipcart-item block">
+                                        <div class="snipcart-thumb">
+                                            <img src="~/iconimages/cam.jpg" id="cam"/>
+                                            <h3>東亞料理</h3>
+                                        </div>
+                                        <div class="snipcart-details top_brand_home_details">
+                                            <form action="checkout.html" method="post">
+                                                <fieldset>
+                                                    <input style="text-align:center" value="點我前往" class="button" />
+                                                </fieldset>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </figure>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+<!--top-banner-->
+<style>
+    #usa {
+        position: relative;
+        left: 30%;
+        height: 70px;
+        width: 70px;
+    }
+    #jp {
+        position: relative;
+        left: 30%;
+        height: 70px;
+        width: 70px;
+    }
+    #fra {
+        position: relative;
+        left: 30%;
+        height: 70px;
+        width: 70px;
+    }
+    #cam {
+        position:relative;
+        left:30%;
+        height: 70px;
+        width: 70px;
+    }
+</style>

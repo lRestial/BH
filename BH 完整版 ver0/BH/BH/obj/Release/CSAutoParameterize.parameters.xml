@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="ECARDBEntities-Web.config Connection String" description="ECARDBEntities 應用程式在 web.config 中用來存取資料庫的連接字串。" defaultValue="metadata=res://*/Models.ECARDBModel.csdl|res://*/Models.ECARDBModel.ssdl|res://*/Models.ECARDBModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=bha7410011.database.windows.net;initial catalog=ECARDB;persist security info=True;user id=A7410011;password=A74bh10011;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\新增資料夾\(專題\)\\BH\ 完整版\ ver0\\BH\\BH\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ECARDBEntities']/@connectionString" />
+  </parameter>
+</parameters>

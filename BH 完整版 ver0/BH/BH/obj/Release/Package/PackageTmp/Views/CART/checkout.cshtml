@@ -1,0 +1,65 @@
+﻿@model IEnumerable<BH.Models.cartpaypal>
+@{
+    ViewBag.Title = "checkout";
+    decimal TotalAmoumt = 0.00M;
+}
+<!-- now location-->
+<div class="products-breadcrumb">
+    <div class="container">
+        <ul>
+            <li><i class="fa fa-home" aria-hidden="true"></i><a href="@Url.Action("Index","home")">Home</a><span>|</span></li>
+            <li>確認訂單</li>
+        </ul>
+    </div>
+</div>
+<!--now location-->
+
+<table class="timetable_sub">
+    <thead>
+        <tr>
+            <th>圖片</th>
+            <th>名稱</th>
+            <th>數量</th>
+            <th>價格</th>
+            <th>小計</th>
+        </tr>
+    </thead>
+    @foreach (var car in Model)
+    {
+        TotalAmoumt += car.Total;
+        Session["Total"] = TotalAmoumt;
+        <tbody>
+            <tr class="rem1">
+                <td class="invert">
+                    <img src="@Url.Content(car.imagePath)" height="50px" width="50px" class="img-rounded" />
+                </td>
+                <td class="invert">
+                    @car.itemName
+                </td>
+                <td class="invert">
+                    <p>x  @car.Quantity.ToString()</p>
+                </td>
+                <td class="invert">
+                    @car.UnitPrice.ToString("#00 元(台幣)")
+                </td>
+                <td class="invert">
+                    @car.Total.ToString("#00 元(台幣)")
+
+                </td>
+            </tr>
+        </tbody>
+    }
+
+</table>
+<br />
+<div style="border-top:2px solid maroon">
+    <h2 style="position:relative;left:80%">總和 @TotalAmoumt.ToString("#00 元(台幣)")</h2>
+    <br />
+    <h2 style="position:relative;left:80%">付款方式:</h2>
+    <a href="@Url.Action("PaymentWithPaypal","CART")">
+        <div>
+            <img src="~/iconimages/paypal.png" style="position:relative;left:80%; height:100px;width:200px;border:1px,solid,#000000">
+        </div>     
+    </a>
+
+</div>

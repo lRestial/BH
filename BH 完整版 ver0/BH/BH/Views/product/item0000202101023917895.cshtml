@@ -1,0 +1,95 @@
+﻿@model IEnumerable<BH.viewmodel.shoppingviewmodel>
+
+
+@if (Model.Count() == 0)
+{
+    <p colspan="3" style="color:#ff0000">
+        沒有符合之商品
+    </p>
+}
+else
+{
+    foreach (var item in Model)
+    {
+        <div class="agileinfo_single">
+            <div class="col-md-4 agileinfo_single_left">
+                <img src="@Url.Content(item.imagePath)" style="width:100%;height:100%" />
+            </div>
+            <div class="col-md-8 agileinfo_single_right">
+                <h1> @item.itemName</h1>
+                <hr />
+                <div class="w3agile_description">
+                    <h4>商品詳細:</h4>
+                    <p>
+                        @item.Description
+                    </p>
+                </div>
+                <div class="snipcart-item block">
+                    <div class="snipcart-thumb agileinfo_single_right_snipcart">
+                        <h4>@item.itemPrice.ToString("#00 元(台幣)") </h4>
+                    </div>
+                    @if (Session["username"] == null || string.IsNullOrWhiteSpace(Session["username"].ToString()))
+                    {
+
+                        <div class="snipcart-details top_brand_home_details">
+                            <a href="@Url.Action("Loginfirst", "login")">
+                                <span class="btn btn-primary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-plus-fill" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0zM8.5 8a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V12a.5.5 0 0 0 1 0v-1.5H10a.5.5 0 0 0 0-1H8.5V8z" />
+                                    </svg>
+                                    Add to Cart
+                                </span>
+                            </a>
+
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="snipcart-details top_brand_home_details">
+                            <button name="AddtoCart" value="" class="btn btn-primary" itemid="@item.itemID" id="btnAddtoCart" onclick="AddtoCart(this)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-plus-fill" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0zM8.5 8a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V12a.5.5 0 0 0 1 0v-1.5H10a.5.5 0 0 0 0-1H8.5V8z" />
+                                </svg>
+                                Add to Cart
+                            </button>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    }
+}
+
+<script type="text/javascript" defer>
+    function AddtoCart(item) {
+        var itemId = $(item).attr("itemid")
+        var formData = new FormData();
+        formData.append("ItemId", itemId)
+
+        $.ajax({
+            async: false,
+            type: 'POST',
+            contentType: false,
+            processData: false,
+            data: formData,
+            url: '/shopping/Index',
+            success: function (data) {
+                if (data.Counter == null || data.Counter == 0) {
+                    $('#cartItem').html();
+                }
+                else if (1 <= data.Counter <= 9) {
+
+                    $('#cartItem').html('<img src="/iconimages/number' + data.Counter + '.png"/>');
+                }
+                else if (data.Counter >= 10) {
+                    $('#cartItem').html('<img src="/iconimages/' + 'plus' + '.png"/>');
+                }
+            },
+            error: function () {
+                alert("這裡有些問題");
+            }
+        });
+
+    }
+</script>

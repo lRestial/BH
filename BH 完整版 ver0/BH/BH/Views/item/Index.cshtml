@@ -1,0 +1,75 @@
+﻿@model IEnumerable<BH.Models.items>
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<h2>Index</h2>
+<p>
+    @Html.ActionLink("新增商品資料", "createofitem")
+</p>
+
+@if (Model.Count() == 0)
+{
+    <p>
+        無紀錄
+    </p>
+}
+else
+{
+    <table id="mytable" class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.itemName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.itemPrice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.itemID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.categoryId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.imagePath)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.itemName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.itemPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.itemID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.categoryId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.imagePath)                                         
+                    </td>
+                    <td>
+                        <a href="@Url.Action("editofitem", new { itemid = item.itemID,itemimagePath=item.imagePath})">
+                            <span class="glyphicon glyphicon-edit" aria-hidden="true">
+
+                            </span>
+                        </a>
+                        <a href="@Url.Action("deleteofitem",new { itemid = item.itemID })" onclick="return confirm('確定刪除?');">
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true">
+                            </span>
+                        </a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

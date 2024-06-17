@@ -1,0 +1,297 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>BH 專題</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+  
+
+
+
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- font-awesome icons -->
+    <link href="css/font-awesome.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- //font-awesome icons -->
+    <link href='//fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+            });
+        });
+    </script>
+    <!-- start-smoth-scrolling -->
+
+    <link href="~/styles/bootstrap.css" rel="stylesheet" />
+    <link href="~/styles/creditly.css" rel="stylesheet" />
+    <link href="~/styles/easy-responsive-tabs.css" rel="stylesheet" />
+    <link href="~/styles/flexslider.css" rel="stylesheet" />
+    <link href="~/styles/font-awesome.css" rel="stylesheet" />
+    <link href="~/styles/style.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-2.2.3.min.js"></script>
+    <script src="~/Scripts/easing.js"></script>
+    <script src="~/Scripts/move-top.js"></script>
+
+    <style>
+        .dropbtn {
+            background-color: #04AA6D;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+                .dropdown-content a:hover {
+                    background-color: #ddd;
+                }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <div class="agileits_header">
+        <div class="w3l_offers">
+            <a href="@Url.Action("Index", "Home")">BH HOME!</a>
+        </div>
+        <div class="w3l_search">
+            <form action="/shopping/Index" method="get">
+                <input name="searching" type="text" placeholder="搜尋..." class="form-control mr-sm-2" autofocus="">
+                <button name="searching" type="submit" class="btn" style="background-color:orange">搜尋</button>
+            </form>
+        </div>
+        <div class="product_list_header">
+            <form action="/CART/shoppingCartThing" method="post" class="last">
+                <fieldset>
+                    <button style="background-color: #212121;border: 1px solid #84c639;height:45px;width:100px">
+                        <text style="color: #fff">購物車</text>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-cart4" viewBox="0 0 16 16">
+                            <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                        </svg>
+                        @Html.Partial("shoppingcartcount")
+                    </button>
+                </fieldset>
+            </form>
+        </div>
+        <div class="w3l_header_right">
+            <ul>
+                @if (Session["username"] == null || string.IsNullOrWhiteSpace(Session["username"].ToString()))
+                {
+                    <li class="dropdown profile_details_drop">
+                        <a href="@Url.Action("Loginfirst", "login")" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i><span class="caret"></span></a>
+                        <div class="mega-dropdown-menu">
+                            <div class="w3ls_vegetables">
+                                <ul class="dropdown-content">
+                                    <li>@Html.ActionLink("登入", "Loginfirst", "login")</li>
+                                    <li>@Html.ActionLink("註冊", "Logincreate", "login")</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                }
+                else if (Session["username"] == Session["manage"])
+                {
+                    <li class="dropdown profile_details_drop">
+                        <a href="@Url.Action("Index", "login")" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                            <text>master~@Session["username"]</text>
+                            <span class="caret"></span>
+                        </a>
+                        <div class="mega-dropdown-menu">
+                            <div class="w3ls_vegetables">
+                                <ul class="dropdown-content">
+                                    <li>@Html.ActionLink("商品列表", "Index", "item")</li>
+                                    <li>@Html.ActionLink("登出", "loginout", "login")</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                }
+                else if (Session["username"] == Session["username"])
+                {
+                    <li class="dropdown profile_details_drop">
+                        <a href="@Url.Action("Index", "login")" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                            <text>Hi~@Session["username"]</text>
+                            <span class="caret"></span>
+                        </a>
+                        <div class="mega-dropdown-menu">
+                            <div class="w3ls_vegetables">
+                                <ul class="dropdown-content">
+                                    <li>@Html.ActionLink("帳號資料", "Index", "login")</li>
+                                    <li>@Html.ActionLink("訂單", "Index", "payorders")</li>
+                                    <li>@Html.ActionLink("登出", "loginout", "login")</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                }
+                else
+                {
+                    <li class="dropdown profile_details_drop">
+                        <a href="@Url.Action("Index", "login")" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i><span class="caret"></span></a>
+                        <div class="mega-dropdown-menu">
+                            <div class="w3ls_vegetables">
+                                <ul class="dropdown-content">
+                                    <li>@Html.ActionLink("登入", "Index", "login")</li>
+                                    <li>@Html.ActionLink("註冊", "Logincreate", "login")</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                }
+
+            </ul>
+        </div>
+        <div class="w3l_header_right1">
+            <h2><a href="https://www.pccu.edu.tw/">連結!</a></h2>
+        </div>
+        <div class="clearfix">
+        </div>
+    </div>
+
+    <div class="container body-content" style="width:100%">
+        <!--logo-->
+        <div class="logo_products">
+            <div class="container">
+                <div class="w3ls_logo_products_left">
+                    <h1><a href="@Url.Action("Index","home")"><span>BH</span> 商店</a></h1>
+                </div>
+                <div class="w3ls_logo_products_left1">
+                    <ul class="special_items">
+                        <li><a href="@Url.Action("About","home")">關於我們</a><i>/</i></li>
+                        <li><a href="@Url.Action("Event","home")">抽抽樂</a><i>/</i></li>
+                        <li><a href="@Url.Action("Service","home")">服務</a></li>
+                    </ul>
+                </div>
+                <div class="w3ls_logo_products_left1">
+                    <ul class="phone_email">
+                        <li><i class="fa fa-phone" aria-hidden="true"></i>(+0123) 234 567</li>
+                        <li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="https://login.microsoftonline.com/">BH@shopping.com</a></li>
+                    </ul>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+        <hr />
+        <!--logo-->
+        @RenderBody()
+        @switch (ViewBag.Title)
+        {
+            case "USAfood":
+                break;
+            case "JPfood":
+                break;
+            case "SAfood":
+                break;
+            case "Frenchfood":
+                break;
+            default:
+                {
+                    <!-- footer -->
+                    <div class="footer">
+                        <div class="container">
+                            <div class="col-md-3 w3_footer_grid">
+                                <h3>information</h3>
+                                <ul class="w3_footer_grid_list">
+                                    <li><a href="@Url.Action("About","home")">關於我們</a></li>
+                                    <li><a href="@Url.Action("Event","home")">抽抽樂</a></li>
+                                    <li><a href="@Url.Action("Service","home")">服務</a></li>
+                                </ul>
+                            </div>Service
+                            <div class="col-md-3 w3_footer_grid">
+                                <h3>policy info</h3>
+                                <ul class="w3_footer_grid_list">
+                                    <li><a href="faqs.html">FAQ</a></li>
+                                    <li><a href="privacy.html">隱私權政策</a></li>
+                                    <li><a href="privacy.html">使用條款</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="col-md-3 w3_footer_grid">
+                                <h3>connect with us</h3>
+                                <ul class="agileits_social_icons">
+                                    <li><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="#" class="google"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                    <li><a href="#" class="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                    <li><a href="#" class="dribbble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+
+
+                            <div class="col-md-3 w3_footer_grid">
+                                <h3>twitter posts</h3>
+                                <ul class="w3_footer_grid_list1">
+                                    <li>
+                                        <label class="fa fa-twitter" aria-hidden="true"></label><i>01 day ago</i><span>
+                                            Non numquam <a href="#">http://sd.ds/13jklf#</a>
+                                            eius modi tempora incidunt ut labore et
+                                            <a href="#">http://sd.ds/1389kjklf#</a>quo nulla.
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <label class="fa fa-twitter" aria-hidden="true"></label><i>02 day ago</i><span>
+                                            Con numquam <a href="#">http://fd.uf/56hfg#</a>
+                                            eius modi tempora incidunt ut labore et
+                                            <a href="#">http://fd.uf/56hfg#</a>quo nulla.
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="clearfix"> </div>
+                            <div class="wthree_footer_copy">
+                                <p>© 2016 Grocery Store. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- //footer -->
+                }
+                break;
+        }
+
+
+
+
+        <hr />
+    </div>
+    <footer>
+        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+    </footer>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+  
+</body>
+</html>

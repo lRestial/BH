@@ -1,0 +1,81 @@
+﻿@model  BH.Models.login
+@{
+    ViewBag.Title = "Index";
+}
+
+@{
+    if (Session["username"] == null || string.IsNullOrWhiteSpace(Session["username"].ToString()))
+    {
+        Response.Redirect("~/login/Loginfirst");
+    }
+
+
+}
+<!-- now location-->
+<div class="products-breadcrumb">
+    <div class="container">
+        <ul>
+            <li><i class="fa fa-home" aria-hidden="true"></i><a href="@Url.Action("Index","home")">Home</a><span>|</span></li>
+            <li>Index</li>
+        </ul>
+    </div>
+</div>
+<!--now location-->
+<h2>Index</h2>
+<div>
+    <table height="100%" width="100%" style="position:center">
+        <tbody style="border:1px outset;">          
+            <tr>
+                <th colspan="2">
+                    <text>帳號:</text>
+                    <a href="@Url.Action("editoflogin", new { username = @Model.username,password=@Model.password})" style="position:relative;left:96%">
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true">
+
+                        </span>
+                    </a>
+                </th>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <text style="position:relative;left:44%">@Model.username</text>
+                    <hr />
+                </th>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <text >電話號碼:</text>
+                </th>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <text style="position:relative;left:44%">+886 @Model.phone</text>
+                    <hr />
+                </th>
+            </tr>                    
+            <tr>
+                <th colspan="2">
+                    <text >信箱:</text>
+                </th>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <text style="position:relative;left:44%">@Model.email</text>
+                    <hr />
+                </th>
+            </tr>                    
+            <tr>
+                <th colspan="2">
+                    <text >地址:</text>
+                </th>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <text style="position:relative;left:44%">@Model.address</text>
+                    <hr />
+                </th>
+            </tr>                         
+        </tbody>
+    </table>
+</div>
+
+
